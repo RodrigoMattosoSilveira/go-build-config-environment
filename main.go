@@ -14,7 +14,8 @@ type environment struct {
 }
 
 //go:embed environments
-var usersDir embed.FS
+var environmentsDir embed.FS
+
 var configurationFileName string
 
 func main() {
@@ -23,14 +24,14 @@ func main() {
 	fmt.Println("environment:", *envPtr)
 	configurationFileName = *envPtr + ".json"
 
-	files, err := usersDir.ReadDir("environments")
+	files, err := environmentsDir.ReadDir("environments")
 	if err != nil {
 		log.Fatalln(err)
 	}
 
 	for _, file := range files {
 		if file.Name() == configurationFileName {
-			val, err := usersDir.ReadFile("environments/" + file.Name())
+			val, err := environmentsDir.ReadFile("environments/" + file.Name())
 			if err != nil {
 				fmt.Println(err)
 				continue
