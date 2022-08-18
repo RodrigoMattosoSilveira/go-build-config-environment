@@ -1,5 +1,5 @@
-# go-config-environment
-A sample app to show how to configure the environment
+# go-build-config-environment
+A sample app to show how to configure a go application build environment
 
 We use two go features, `embeded` and `Command-Line Flags`.
 
